@@ -1,0 +1,9 @@
+import React, { useState } from "react"; import { View, Text, Button, ScrollView, StyleSheet } from "react-native"; import { Motion, AnimatePresence } from "framer-motion";
+
+const VillaGarden = () => { const [view, setView] = useState("overview");
+
+return ( <ScrollView style={styles.container}> <Text style={styles.title}>باغچه ویلا مدرن</Text> <View style={styles.card}> <AnimatePresence> {view === "overview" ? ( <Motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}> <Text style={styles.heading}>طراحی کلی</Text> <Text style={styles.text}>استفاده از سازه سبک و مقاوم</Text> <Text style={styles.text}>استخر کوچک با فیلتراسیون ساده</Text> <Text style={styles.text}>استفاده از گیاهان بومی و مقاوم به خشکی</Text> <Text style={styles.text}>نورپردازی خورشیدی و LED کم‌مصرف</Text> <Button title="جزئیات بیشتر" onPress={() => setView("details")} /> </Motion.div> ) : ( <Motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}> <Text style={styles.heading}>جزئیات ساخت</Text> <Text style={styles.text}>استفاده از سازه LSF یا ساندویچ پانل</Text> <Text style={styles.text}>استخر کوچک با عمق کم و روکش پلیمری</Text> <Text style={styles.text}>مسیرهای سنگی و چمن مصنوعی</Text> <Text style={styles.text}>گابیون‌های سنگی و فلاورباکس‌های بتنی</Text> <Text style={styles.text}>نورپردازی با چراغ‌های خورشیدی</Text> <Button title="بازگشت" onPress={() => setView("overview")} /> </Motion.div> )} </AnimatePresence> </View> </ScrollView> ); };
+
+const styles = StyleSheet.create({ container: { flex: 1, backgroundColor: "#f4f4f4", padding: 16 }, title: { fontSize: 28, fontWeight: "bold", marginBottom: 16, textAlign: "center" }, card: { backgroundColor: "#fff", padding: 16, borderRadius: 16, marginBottom: 16, shadowColor: "#000", shadowOpacity: 0.1, shadowRadius: 8, elevation: 5 }, heading: { fontSize: 22, fontWeight: "600", marginBottom: 8 }, text: { fontSize: 16, marginBottom: 4 } });
+
+export default VillaGarden;
